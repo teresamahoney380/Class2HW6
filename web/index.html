@@ -9,8 +9,18 @@ and open the template in the editor.
         <title>Rectangle Area</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <h1>Rectangle Area Calculator</h1>
+            <form id="form1" name="form1" method="POST" action="calculator">
+                Enter a length: <input type="text" name="tlength">
+                Enter a width: <input type="text" name="twidth">
+                <center>
+                <input id="calcArea" name="calcArea" type="submit" value="Calculate Area">
+            </center>
+            </form>
+        </div>
     </body>
 </html>
