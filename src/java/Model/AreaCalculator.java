@@ -71,9 +71,9 @@ public class AreaCalculator {
         return getLength() * getWidth();
     }
 
-    public static void main(String[] args) {
-        AreaCalculator ac=new AreaCalculator("10", "20");
-        System.out.println(ac.getArea());
-    }
+//    public static void main(String[] args) {
+//        AreaCalculator ac=new AreaCalculator("10", "20");
+//        System.out.println(ac.getArea());
+//    }
 
 }
