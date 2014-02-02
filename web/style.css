@@ -10,4 +10,9 @@ and open the template in the editor.
 h1{
     color:blue;
 }
-
+body{
+    background-color: lightyellow;
+}
+#answer{
+    color:green;
+}

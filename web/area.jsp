@@ -14,9 +14,9 @@
     </head>
     <body>
         <h1>Rectangle Area</h1>
-        <p>
-            The Area is: <br>
-            <% out.print(request.getAttribute("textArea"));
+        <p id="answer">
+            The Rectangle Area is: 
+            <%= request.getAttribute("textArea")
             %>
         </p>
     </body>
