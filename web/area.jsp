@@ -15,7 +15,7 @@
     <body>
         <h1>Calculation Results</h1>
         <p id="answer">
-            The Rectangle Area is: ${textArea}
+            The ${shape} Area is: ${textArea}. 
             
         </p>
     </body>

@@ -34,23 +34,26 @@ public class AreaGenerator extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("text/html;charset=UTF-8");
         // parameters are name attributes in view pages
         // Here we're retrieving form content from form.html
-        String l = request.getParameter("tlength");
-        String w = request.getParameter("twidth");
+//        String l = request.getParameter("tlength");
+//        String w = request.getParameter("twidth");
+        String shape=request.getParameter("shape");
 
         // Create a new instance of a model object
         // For some applications, we would not want to create a new one each time.
-        AreaCalculator ac = new AreaCalculator(l, w);
-        String textArea = Double.toString(ac.getArea());
+        AreaCalculator ac = new AreaCalculator(shape);
+        
+        //String textArea = Double.toString(ac.getArea());
         // Always a good idea to trim and/or validate input data
         //---List result = be.getBrands(c.trim());
 
         // Parameters are read only Request object properties, but attributes
         // are read/write. We can use attributes to store data for use on
         // another page.
-        request.setAttribute("textArea", textArea);
+        //request.setAttribute("textArea", textArea);
+        request = ac.getResultForType(request,shape);
 
         // This object lets you forward both the request and response
         // objects to a destination page
