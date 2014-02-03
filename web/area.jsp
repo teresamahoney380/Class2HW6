@@ -13,11 +13,10 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1>Rectangle Area</h1>
+        <h1>Calculation Results</h1>
         <p id="answer">
-            The Rectangle Area is: 
-            <%= request.getAttribute("textArea")
-            %>
+            The Rectangle Area is: ${textArea}
+            
         </p>
     </body>
 </html>

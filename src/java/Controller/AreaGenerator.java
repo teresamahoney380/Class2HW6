@@ -43,7 +43,7 @@ public class AreaGenerator extends HttpServlet {
         // Create a new instance of a model object
         // For some applications, we would not want to create a new one each time.
         AreaCalculator ac = new AreaCalculator(l, w);
-        String textArea = Integer.toString(ac.getArea());
+        String textArea = Double.toString(ac.getArea());
         // Always a good idea to trim and/or validate input data
         //---List result = be.getBrands(c.trim());
 

@@ -9,8 +9,8 @@ import java.io.IOException;
  */
 public class AreaCalculator {
 
-    private int length;
-    private int width;
+    private double length;
+    private double width;
     // private String TextLength;
     private static final String PARAM_ERROR = "Invalid Parameter";
 
@@ -29,7 +29,7 @@ public class AreaCalculator {
         if (textLength == null || textLength.length() == 0) {
             throw new IllegalArgumentException(PARAM_ERROR);
         } else {
-            length = Integer.parseInt(textLength);
+            length = Double.parseDouble(textLength.trim());
         }
     }
 
@@ -43,7 +43,7 @@ public class AreaCalculator {
         if (textWidth == null || textWidth.length() == 0) {
             throw new IllegalArgumentException(PARAM_ERROR);
         } else {
-            width = Integer.parseInt(textWidth);
+            width = Double.parseDouble(textWidth.trim());
         }
     }
 
@@ -51,7 +51,7 @@ public class AreaCalculator {
      *
      * @return value of length
      */
-    public final int getLength() {
+    public final double getLength() {
         return length;
     }
 
@@ -59,7 +59,7 @@ public class AreaCalculator {
      *
      * @return value of length
      */
-    public final int getWidth() {
+    public final double getWidth() {
         return width;
     }
 
@@ -67,7 +67,7 @@ public class AreaCalculator {
      *
      * @return value of length * width
      */
-    public final int getArea() {
+    public final double getArea() {
         return getLength() * getWidth();
     }
 
