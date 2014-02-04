@@ -15,7 +15,7 @@
     <body>
         <h1>Calculation Results</h1>
         <p id="answer">
-            The ${shape} Area is: ${textArea}. 
+            ${shapeMsg}${textArea}. 
             
         </p>
     </body>

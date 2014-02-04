@@ -14,6 +14,7 @@ public class AreaCalculator {
     private double width;
     private String shape;
     private double result;
+    private String shapeMsg;
 
     // private String TextLength;
     private static final String PARAM_ERROR = "Invalid Parameter";
@@ -26,18 +27,32 @@ public class AreaCalculator {
 
         switch (shape) {
             case "rectangle":
-                String l=request.getParameter("tlength");
-                String w=request.getParameter("twidth");
-                length=Double.parseDouble(l);
-                width=Double.parseDouble(w);
-                result=length*width;
+                String l = request.getParameter("tlength");
+                String w = request.getParameter("twidth");
+                length = Double.parseDouble(l);
+                width = Double.parseDouble(w);
+                shapeMsg = "The area of a " + l + " x " + w + " " + shape + " is: ";
+                result = length * width;
                 break;
             case "circle":
+                String r = request.getParameter("tradius");
+                double radius = 0;
+                radius = Double.valueOf(r);
+                double radiusSquared = radius * radius;
+                shapeMsg = "The area of a " + shape + " with a radius of " + r + " is: ";
+                result = 3.14 * radiusSquared;
                 break;
             case "triangle":
+                double a = Double.valueOf(request.getParameter("tsideA"));
+                double b = Double.valueOf(request.getParameter("tsideB"));
+                double c = (a * a) + (b * b);
+                shapeMsg = "A " + shape + " with Side A = " + a + " and Side B = " + b
+                        + " has a Side C = ";
+                result = Math.sqrt(c);
                 break;
         }
         request.setAttribute("textArea", result);
+        request.setAttribute("shapeMsg", shapeMsg);
         request.setAttribute("shape", shape);
         return request;
     }
