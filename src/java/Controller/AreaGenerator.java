@@ -21,7 +21,7 @@ import Model.AreaCalculator;
  */
 @WebServlet(name = "AreaGenerator", urlPatterns = {"/calculator"})
 public class AreaGenerator extends HttpServlet {
-    private static final String RESULT_PAGE = "area.jsp";
+    private static final String RESULT_PAGE = "MainCalculator.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
