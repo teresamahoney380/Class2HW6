@@ -10,14 +10,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class AreaCalculator {
 
-    private double length;
-    private double width;
-    private String shape;
+    private final String shape;
     private double result;
     private String shapeMsg;
-
-    // private String TextLength;
-    private static final String PARAM_ERROR = "Invalid Parameter";
 
     public AreaCalculator(String shape) {
         this.shape = shape;
@@ -27,28 +22,43 @@ public class AreaCalculator {
 
         switch (shape) {
             case "rectangle":
-                String l = request.getParameter("tlength");
-                String w = request.getParameter("twidth");
-                length = Double.parseDouble(l);
-                width = Double.parseDouble(w);
-                shapeMsg = "The area of a " + l + " x " + w + " " + shape + " is: ";
-                result = length * width;
+                try {
+                    double l = Double.valueOf(request.getParameter("tlength"));
+                    double w = Double.valueOf(request.getParameter("twidth"));
+                    shapeMsg = "The area of a " + l + " x " + w + " " + shape + " is: ";
+                    result = l * w;
+                } catch (NumberFormatException nfe) {
+                    shapeMsg = "Sorry, you must submit 2 numerical values for this calculation. ";
+                    result = 0;
+                }
                 break;
             case "circle":
-                String r = request.getParameter("tradius");
-                double radius = 0;
-                radius = Double.valueOf(r);
-                double radiusSquared = radius * radius;
-                shapeMsg = "The area of a " + shape + " with a radius of " + r + " is: ";
-                result = 3.14 * radiusSquared;
+                try {
+                    double r = Double.valueOf(request.getParameter("tradius"));
+                    double radiusSquared = r * r;
+                    shapeMsg = "The area of a " + shape + " with a radius of " + r + " is: ";
+                    result = 3.14 * radiusSquared;
+                } catch (NumberFormatException nfe) {
+                    shapeMsg = "Sorry, you must submit a numerical value for this calculation. ";
+                    result = 0;
+                }
                 break;
             case "triangle":
-                double a = Double.valueOf(request.getParameter("tsideA"));
-                double b = Double.valueOf(request.getParameter("tsideB"));
-                double c = (a * a) + (b * b);
-                shapeMsg = "A " + shape + " with Side A = " + a + " and Side B = " + b
-                        + " has a Side C = ";
-                result = Math.sqrt(c);
+                try {
+                    double a = Double.valueOf(request.getParameter("tsideA"));
+                    double b = Double.valueOf(request.getParameter("tsideB"));
+                    double c = (a * a) + (b * b);
+                    shapeMsg = "A " + shape + " with Side A = " + a + " and Side B = " + b
+                            + " has a Side C = ";
+                    result = Math.sqrt(c);
+                } catch (NumberFormatException nfe) {
+                    shapeMsg = "Sorry, you must submit 2 numerical values for this calculation. ";
+                    result = 0;
+                }
+                break;
+            default:
+                shapeMsg = "An invalid shape type was passed in - no caclculation performed. ";
+                result = 0;
                 break;
         }
         request.setAttribute("textArea", result);
@@ -57,66 +67,4 @@ public class AreaCalculator {
         return request;
     }
 }
-
-//    public AreaCalculator(String textLength, String textWidth) {
-//        setLength(textLength);
-//        setWidth(textWidth);
-//
-//    }
-//
-//  
-//    /**
-//     * This method sets the value of the length from a text field
-//     *
-//     * @param textLength - text containing entered length
-//     */
-//    public final void setLength(String textLength) {
-//        if (textLength == null || textLength.length() == 0) {
-//            throw new IllegalArgumentException(PARAM_ERROR);
-//        } else {
-//            length = Double.parseDouble(textLength.trim());
-//        }
-//    }
-//
-//    /**
-//     * This method sets the value of the width from a text field
-//     *
-//     * @param textWidth - text containing entered width
-//     */
-//    public final void setWidth(String textWidth) {
-//
-//        if (textWidth == null || textWidth.length() == 0) {
-//            throw new IllegalArgumentException(PARAM_ERROR);
-//        } else {
-//            width = Double.parseDouble(textWidth.trim());
-//        }
-//    }
-//
-//    /**
-//     *
-//     * @return value of length
-//     */
-//    public final double getLength() {
-//        return length;
-//    }
-//
-//    /**
-//     *
-//     * @return value of length
-//     */
-//    public final double getWidth() {
-//        return width;
-//    }
-//
-//    /**
-//     *
-//     * @return value of length * width
-//     */
-//    public final double getArea() {
-//        return getLength() * getWidth();
-//    }
-//    public static void main(String[] args) {
-//        AreaCalculator ac=new AreaCalculator("10", "20");
-//        System.out.println(ac.getArea());
-//    }
 
